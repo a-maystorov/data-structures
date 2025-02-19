@@ -6,6 +6,19 @@ public class Array {
         items = new int[length];
     }
 
+    public int max() {
+        if (count == 0)
+            throw new IllegalStateException("Array is empty");
+
+        int max = items[0];
+        for (int i = 0; i < count; i++) {
+         if (items[i] > max)
+             max = items[i];
+        }
+
+        return max;
+    }
+
     public int indexOf(int item) {
         for (int i = 0; i < count; i++)
             if(items[i] == item)

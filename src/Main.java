@@ -5,8 +5,6 @@ public class Main {
         nums.insert(20);
         nums.insert(30);
         nums.insert(40);
-        nums.removeAt(0);
-        System.out.println(nums.indexOf(30));
-        nums.print();
+        System.out.println(nums.max());
     }
 }
