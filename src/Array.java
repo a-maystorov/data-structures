@@ -1,9 +1,26 @@
+import java.util.Arrays;
+
 public class Array {
     private int[] items;
     private int count;
 
     public Array(int length) {
         items = new int[length];
+    }
+
+    public Array intersect(Array other) {
+        if (count == 0 || other.count == 0)
+            throw new IllegalStateException("Array is empty");
+
+        Array common = new Array(1);
+
+        for (int i = 0; i < count; i++) {
+            if (other.indexOf(items[i]) >= 0 && common.indexOf(items[i]) == -1) {
+                common.insert(items[i]);
+            }
+        }
+
+        return common;
     }
 
     public int max() {
@@ -53,5 +70,10 @@ public class Array {
     public void print() {
         for (int i = 0; i < count; i++)
             System.out.println(items[i]);
+    }
+
+    @Override
+    public String toString() {
+        return Arrays.toString(items);
     }
 }
