@@ -8,6 +8,28 @@ public class Array {
         items = new int[length];
     }
 
+    public void insertAt(int item, int index) {
+        if (index < 0 || index > count)
+            throw new IllegalArgumentException("Invalid index");
+
+        // Resize if needed
+        if (items.length == count) {
+            int[] newItems = new int[count * 2];
+
+            for (int i = 0; i < count; i++)
+                newItems[i] = items[i];
+
+            items = newItems;
+        }
+
+        // Shift elements to the right to make room
+        for (int i = count; i > index; i--)
+            items[i] = items[i - 1];
+
+        items[index] = item;
+        count++;
+    }
+
     public Array reverse() {
         if (count == 0)
             throw new IllegalStateException("Array is empty");
