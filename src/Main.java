@@ -10,6 +10,6 @@ public class Main {
         other.insert(20);
         other.insert(30);
 
-        System.out.println(nums.intersect(other).toString());
+        System.out.println(nums.reverse());
     }
 }

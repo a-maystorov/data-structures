@@ -8,6 +8,19 @@ public class Array {
         items = new int[length];
     }
 
+    public Array reverse() {
+        if (count == 0)
+            throw new IllegalStateException("Array is empty");
+
+        Array result = new Array(count);
+
+        for (int i = count - 1; i >= 0; i--) {
+            result.insert(items[i]);
+        }
+
+        return result;
+    }
+
     public Array intersect(Array other) {
         if (count == 0 || other.count == 0)
             throw new IllegalStateException("Array is empty");
