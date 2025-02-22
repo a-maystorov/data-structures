@@ -1,9 +1,11 @@
 import java.util.NoSuchElementException;
 
 /**
- * A Linked List is like a chain of nodes, where each node points to the next one.
+ * A Linked List is like a chain of nodes, where each node points to the next
+ * one.
  * Unlike arrays where elements are stored in continuous memory,
- * linked list elements can be scattered in memory but stay connected through references.
+ * linked list elements can be scattered in memory but stay connected through
+ * references.
  */
 public class LinkedList {
     /**
@@ -16,8 +18,8 @@ public class LinkedList {
      * - static: Node belongs to the LinkedList class, not to any specific instance
      */
     private static class Node {
-        private final int value;    // The actual data stored in the node
-        private Node next;          // Reference to the next node (null if it's the last node)
+        private final int value; // The actual data stored in the node
+        private Node next; // Reference to the next node (null if it's the last node)
 
         public Node(int value) {
             this.value = value;
@@ -34,16 +36,16 @@ public class LinkedList {
     /**
      * Example: Adding 5 to [1->2->3]:
      * Before: first -> 1 -> 2 -> 3 <- last
-     * After:  first -> 5 -> 1 -> 2 -> 3 <- last
+     * After: first -> 5 -> 1 -> 2 -> 3 <- last
      */
     public void addFirst(int value) {
         var node = new Node(value);
 
         if (isEmpty())
-            first = last = node;  // For empty list, new node is both first and last
+            first = last = node; // For empty list, new node is both first and last
         else {
-            node.next = first;    // Connect new node to current first
-            first = node;         // Update first to point to new node
+            node.next = first; // Connect new node to current first
+            first = node; // Update first to point to new node
         }
         size++;
     }
@@ -51,16 +53,16 @@ public class LinkedList {
     /**
      * Example: Adding 4 to [1->2->3]:
      * Before: first -> 1 -> 2 -> 3 <- last
-     * After:  first -> 1 -> 2 -> 3 -> 4 <- last
+     * After: first -> 1 -> 2 -> 3 -> 4 <- last
      */
     public void addLast(int value) {
         var node = new Node(value);
 
         if (isEmpty())
-            first = last = node;  // For empty list, new node is both first and last
+            first = last = node; // For empty list, new node is both first and last
         else {
-            last.next = node;     // Connect current last to new node
-            last = node;          // Update last to point to new node
+            last.next = node; // Connect current last to new node
+            last = node; // Update last to point to new node
         }
         size++;
     }
@@ -68,18 +70,18 @@ public class LinkedList {
     /**
      * Example: Removing first from [1->2->3]:
      * Before: first -> 1 -> 2 -> 3 <- last
-     * After:  first -> 2 -> 3 <- last
+     * After: first -> 2 -> 3 <- last
      */
     public void removeFirst() {
         if (isEmpty())
             throw new NoSuchElementException();
 
         if (first == last)
-            first = last = null;  // If only one node, clear all references
+            first = last = null; // If only one node, clear all references
         else {
-            var second = first.next;  // Save reference to second node
-            first.next = null;        // Disconnect the first node
-            first = second;           // Update first to point to second node
+            var second = first.next; // Save reference to second node
+            first.next = null; // Disconnect the first node
+            first = second; // Update first to point to second node
         }
 
         size--;
@@ -88,18 +90,18 @@ public class LinkedList {
     /**
      * Example: Removing last from [1->2->3]:
      * Before: first -> 1 -> 2 -> 3 <- last
-     * After:  first -> 1 -> 2 <- last
+     * After: first -> 1 -> 2 <- last
      */
     public void removeLast() {
         if (isEmpty())
             throw new NoSuchElementException();
 
         if (first == last)
-            first = last = null;  // If only one node, clear all references
+            first = last = null; // If only one node, clear all references
         else {
-            last = getPrevious(last);  // Find second-to-last node
+            last = getPrevious(last); // Find second-to-last node
             assert last != null;
-            last.next = null;          // Remove connection to old last node
+            last.next = null; // Remove connection to old last node
         }
 
         size--;
@@ -119,7 +121,7 @@ public class LinkedList {
             index++;
         }
 
-        return -1;  // Value not found
+        return -1; // Value not found
     }
 
     /**
@@ -175,35 +177,37 @@ public class LinkedList {
     /**
      * Reverses the list in-place (like reversing the direction of all train cars)
      *
-     * The trick: For each node, we need to point it to the previous node instead of the next node
+     * The trick: For each node, we need to point it to the previous node instead of
+     * the next node
      *
      * Steps:
      * 1. Keep track of previous, current, and next nodes
      * 2. For each node:
-     *    - Save next node reference
-     *    - Point current node to previous node
-     *    - Move previous and current pointers forward
+     * - Save next node reference
+     * - Point current node to previous node
+     * - Move previous and current pointers forward
      * 3. Fix first and last pointers
      *
      * Example: Reversing [1->2->3]:
-     * Start:  first -> 1 -> 2 -> 3 <- last
-     * End:    first -> 3 -> 2 -> 1 <- last
+     * Start: first -> 1 -> 2 -> 3 <- last
+     * End: first -> 3 -> 2 -> 1 <- last
      */
     public void reverse() {
-        if (isEmpty()) return;
+        if (isEmpty())
+            return;
 
         var prev = first;
         var curr = first.next;
         while (curr != null) {
-            var next = curr.next;     // Remember next node
-            curr.next = prev;         // Reverse the pointer
-            prev = curr;              // Move prev forward
-            curr = next;              // Move curr forward
+            var next = curr.next; // Remember next node
+            curr.next = prev; // Reverse the pointer
+            prev = curr; // Move prev forward
+            curr = next; // Move curr forward
         }
 
-        last = first;                 // Old first becomes last
-        last.next = null;             // Last node should point to null
-        first = prev;                 // Last processed node becomes first
+        last = first; // Old first becomes last
+        last.next = null; // Last node should point to null
+        first = prev; // Last processed node becomes first
     }
 
     // ========== UTILITY METHODS ==========
