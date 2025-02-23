@@ -1,14 +1,8 @@
-import java.util.ArrayList;
-
 public class Main {
     public static void main(String[] args) {
-        int[] arr = { 12, 10, 9, 45, 2, 10, 10, 45 };
+        int[] arr = { 1, 2, 3, 4, 5 };
+        int k = 3;
 
-        ArrayList<Integer> res = PrintAllDistinctElements.solution(arr);
-
-        for (int val : res) {
-            System.out.print(val + " ");
-        }
-        System.out.println();
+        CheckDuplicatesWithinK.solution(arr, k);
     }
 }
