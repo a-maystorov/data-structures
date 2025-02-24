@@ -3,11 +3,14 @@ import java.util.Queue;
 
 public class Main {
     public static void main(String[] args) {
-        StackQueue queue = new StackQueue();
-        queue.enqueue(10);
-        queue.enqueue(20);
-        queue.enqueue(30);
-        var first = queue.dequeue();
-        System.out.println(first);
+        PrioQueue queue = new PrioQueue();
+        queue.add(5);
+        queue.add(3);
+        queue.add(6);
+        queue.add(1);
+        queue.add(4);
+        System.out.println(queue);
+
+        while (!queue.isEmpty()) System.out.println(queue.remove());
     }
 }
