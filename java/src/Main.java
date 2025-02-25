@@ -1,14 +1,13 @@
-import java.util.ArrayDeque;
-import java.util.Queue;
-
 public class Main {
     public static void main(String[] args) {
-        MyHashTable table = new MyHashTable();
-        table.put(6, "A"); // 1
-        table.put(8, "B"); // 3
-        table.put(11, "C"); // 1
-        table.put(6, "A+");
-        table.remove(6);
-        System.out.println(table.get(10));
+        MyTree tree = new MyTree();
+        tree.insert(7);
+        tree.insert(4);
+        tree.insert(9);
+        tree.insert(1);
+        tree.insert(6);
+        tree.insert(8);
+        tree.insert(10);
+        System.out.println(tree.find(11));
     }
 }
