@@ -104,9 +104,41 @@ public class MyTree {
         if (root == null)
             return -1;
 
-        if (root.leftChild == null && root.rightChild == null)
+        if (isLeaf(root))
             return 0;
 
         return 1 + Math.max(height(root.leftChild), height(root.rightChild));
+    }
+
+    private boolean isLeaf(Node node) {
+        return node.leftChild == null && node.rightChild == null;
+    }
+
+    public int min() {
+//        return min(root);
+
+        // Min value of BST. O(log n);
+        if (root == null)
+            throw new IllegalStateException();
+
+        var current = root;
+        var last = current;
+
+        while (current != null) {
+            last = current;
+            current = current.leftChild;
+        }
+        return last.value;
+    }
+
+//    O(n)
+    private int min(Node root) {
+        if (isLeaf(root))
+            return root.value;
+
+        var left = min(root.leftChild);
+        var right = min(root.rightChild);
+
+        return Math.min(Math.min(left, right), root.value);
     }
 }
