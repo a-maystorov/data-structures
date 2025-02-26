@@ -202,4 +202,11 @@ public class MyTree {
         getNodesAtDistance(root.leftChild, distance - 1, list);
         getNodesAtDistance(root.rightChild, distance - 1, list);
     }
+
+    public void traverseLevelOrder() {
+        for (int i = 0; i <= height(); i++) {
+            for (var value: getNodesAtDistance(i))
+                System.out.println(value);
+        }
+    }
 }
