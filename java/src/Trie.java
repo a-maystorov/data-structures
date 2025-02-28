@@ -35,10 +35,23 @@ public class Trie {
     public void insert(String word) {
         var current = root;
         for (var ch: word.toCharArray()) {
-            if (current.hasChild(ch))
+            if (!current.hasChild(ch))
                 current.addChild(ch);
             current = current.getChild(ch);
         }
         current.isEndOfWord = true;
+    }
+
+    public boolean contains(String word) {
+        if (word == null)
+            return false;
+
+        var current = root;
+        for (var ch : word.toCharArray()) {
+            if (!current.hasChild(ch))
+                return false;
+            current = current.getChild(ch);
+        }
+        return current.isEndOfWord;
     }
 }
