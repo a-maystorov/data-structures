@@ -11,6 +11,6 @@ public class Main {
         graph.addEdge("B", "D");
         graph.addEdge("D", "C");
         graph.addEdge("A", "C");
-        graph.traverseDepthFirst("R");
+        graph.traverseBreathFirst("K");
     }
 }
