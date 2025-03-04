@@ -1,7 +1,4 @@
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class StringUtils {
     public static int countVowels(String str) {
@@ -64,5 +61,27 @@ public class StringUtils {
             }
         }
         return output.toString();
+    }
+
+    public static char getMaxOccuringChar(String str) {
+        if (str == null || str.isEmpty())
+            throw new IllegalArgumentException();
+
+        final int ASCII_SIZE = 256;
+        int[] frequencies = new int[ASCII_SIZE];
+
+        for (var ch : str.toCharArray())
+            frequencies[ch]++;
+
+        int max = 0;
+        char result = ' ';
+
+        for (int i = 0; i < frequencies.length; i++)
+            if (frequencies[i] > max) {
+                max = frequencies[i];
+                result = (char) i;
+            }
+
+        return result;
     }
 }
