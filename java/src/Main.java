@@ -2,7 +2,7 @@ import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
-        var x = StringUtils.capitalize( "today is a great day");
+        var x = StringUtils.areAnagrams( "ABCX", "DBCA");
         System.out.println(x);
     }
 }

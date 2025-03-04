@@ -96,4 +96,39 @@ public class StringUtils {
 
         return String.join(" ", words);
     }
+
+    public static boolean areAnagrams(String first, String second) {
+        if (first == null || second == null || first.length() != second.length())
+            return false;
+
+        var array1 = first.toCharArray();
+        Arrays.sort(array1);
+
+        var array2 = second.toCharArray();
+        Arrays.sort(array2);
+
+        return Arrays.equals(array1, array2);
+    }
+
+    public static boolean areAnagrams2(String first, String second) {
+        if (first == null || second == null)
+            return false;
+
+        final int ALPHABET_SIZE = 26;
+        int[] frequencies = new int[ALPHABET_SIZE];
+
+        first = first.toLowerCase();
+        for (int i = 0; i < first.length(); i++)
+            frequencies[first.charAt(i) - 'a']++;
+
+        second =second.toLowerCase();
+        for (int i = 0; i < second.length(); i++) {
+            var index = second.charAt(i) - 'a';
+            if (frequencies[index] == 0)
+                return false;
+            frequencies[index]--;
+        }
+
+        return true;
+    }
 }
