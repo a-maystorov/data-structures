@@ -2,7 +2,7 @@ import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
-        int count = StringUtils.countVowels("");
-        System.out.println(count);
+        String reversed = StringUtils.reverse("");
+        System.out.println(reversed);
     }
 }
