@@ -1,4 +1,6 @@
 from collections import deque
+from os import listdir
+from os.path import isfile, join
 
 graph = {}
 graph["you"] = ["alice", "bob", "claire"]
@@ -33,3 +35,20 @@ def search(name):
 
 
 search("you")
+
+
+def print_file_names(start_dir):
+    search_queue = deque()
+    search_queue.append(start_dir)
+
+    while search_queue:
+        dir = search_queue.popleft()
+        for file in sorted(listdir(dir)):
+            full_path = join(dir, file)
+            if isfile(full_path):
+                print(file)
+            else:
+                search_queue.append(full_path)
+
+
+print_file_names("../java")
